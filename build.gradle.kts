@@ -32,6 +32,9 @@ kotlin {
         jvm().compilations["main"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("stdlib-jdk8"))
+                implementation("org.openjfx:javafx-controls:11.0.2:linux")
+                implementation("org.openjfx:javafx-graphics:11.0.2:linux")
+                implementation("org.openjfx:javafx-base:11.0.2:linux")
             }
         }
 
