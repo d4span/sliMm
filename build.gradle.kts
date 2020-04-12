@@ -1,3 +1,6 @@
+val platform: String? by project
+val platformProperty: String = platform ?: "linux"
+
 plugins {
     kotlin("multiplatform") version "1.3.70"
 }
@@ -32,9 +35,9 @@ kotlin {
         jvm().compilations["main"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("stdlib-jdk8"))
-                implementation("org.openjfx:javafx-controls:11.0.2:linux")
-                implementation("org.openjfx:javafx-graphics:11.0.2:linux")
-                implementation("org.openjfx:javafx-base:11.0.2:linux")
+                implementation("org.openjfx:javafx-controls:11.0.2:$platformProperty")
+                implementation("org.openjfx:javafx-graphics:11.0.2:$platformProperty")
+                implementation("org.openjfx:javafx-base:11.0.2:$platformProperty")
             }
         }
 
