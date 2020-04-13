@@ -1,30 +1,31 @@
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.3.71" apply false
+    id "dev.clojurephant.clojure" version "0.5.0"
+}
+
+dependencies {
+    implementation "org.clojure:clojure:1.10.1"
 }
 
 allprojects {
     group = "ch.d4span.sliMm"
     version = "0.0.1"
-}
 
-subprojects {
+    apply plugin: 'dev.clojurephant.clojure'
+
     repositories {
         mavenCentral()
-    }
-
-    apply plugin: 'kotlin'
-
-    tasks {
-        compileKotlin {
-            kotlinOptions.jvmTarget = targetJvm
-        }
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = targetJvm
+        jcenter()
+        maven {
+            name = 'Clojars'
+            url = 'https://repo.clojars.org/'
         }
     }
 
-    dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-        testImplementation "org.jetbrains.kotlin:kotlin-test"
+    clojure {
+        builds {
+            main {
+                reflection = 'warn'
+            }
+        }
     }
 }
